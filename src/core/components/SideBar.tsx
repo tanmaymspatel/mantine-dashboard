@@ -1,19 +1,21 @@
 import { useState } from 'react';
-import { Navbar, Center, Tooltip, UnstyledButton, createStyles, Stack, rem, Title, Text, Image } from '@mantine/core';
+import { Navbar, Tooltip, UnstyledButton, createStyles, Stack, rem, Title, Text, Image, Paper, ScrollArea } from '@mantine/core';
 import avatar from '../../assets/images/avatar.svg'
 const useStyles = createStyles((theme) => ({
     'nav-header': {
-        height: "80px",
-        borderBottom: `1px solid ${theme.white}`,
+        height: "60px",
+        borderBottom: `1px solid ${theme.colors.gray[7]}`,
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: theme.black
     },
     'header-title': {
         color: theme.white,
-        border: `2px solid ${theme.white}`,
-        padding: "0.5rem",
-        borderRadius: "50%"
+        border: `1px solid ${theme.white}`,
+        padding: "0.25rem",
+        borderRadius: "50%",
+        fontSize: "0.75rem"
     },
     link: {
         width: rem(50),
@@ -23,7 +25,7 @@ const useStyles = createStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         color: theme.white,
-        opacity: 0.85,
+        // opacity: 0.85,
 
         // '&:hover': {
         //     opacity: 1,
@@ -44,10 +46,10 @@ const useStyles = createStyles((theme) => ({
         // },
     },
     'icon-style': {
-        fontSize: "1.5rem"
+        fontSize: "1.25rem"
     },
     'nav-1': {
-        borderBottom: `1px solid ${theme.white}`
+        borderBottom: `1px solid ${theme.colors.gray[7]}`
     }
 }));
 
@@ -72,8 +74,6 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 const nav1 = [
     { icon: 'icon-home', label: 'Home' },
     { icon: 'icon-clock', label: 'Duration' },
-
-
 ];
 
 const nav2 = [
@@ -118,35 +118,39 @@ function Sidebar() {
     return (
         <Navbar
             height="100%"
-            width={{ base: 80 }}
-            p="md"
+            width={{ base: 50 }}
             sx={(theme) => ({
-                backgroundColor: theme.black
+                backgroundColor: theme.black,
+                border: "none"
             })}
         >
-            <div className={classes['nav-header']}>
+            <Paper className={classes['nav-header']}>
                 <Title className={classes['header-title']} order={6}>PM</Title>
-            </div>
-            <Navbar.Section my={25} pb={25} className={classes['nav-1']}>
-                <Stack justify="center" align="center" spacing={0}>
-                    {navLinks1}
-                </Stack>
+            </Paper>
+            <Navbar.Section my={15} pb={15} className={classes['nav-1']}>
+                <ScrollArea>
+                    <Stack justify="center" align="center" spacing={0}>
+                        {navLinks1}
+                    </Stack>
+                </ScrollArea>
             </Navbar.Section>
-            <Navbar.Section grow mt={16}>
+            <Navbar.Section grow mt={15}>
                 <Stack justify="center" align="center" spacing={0}>
                     {navLinks2}
                 </Stack>
             </Navbar.Section>
-            <Navbar.Section mt={50}>
-                <Stack justify="center" align="center" spacing={0}>
-                    {navLinks3}
-                </Stack>
-            </Navbar.Section>
-            <Navbar.Section>
-                <Stack justify="center" spacing={0}>
-                    <Image width={32} height={32} mx="auto" mt="md" radius="50%" src={avatar} alt="Profile image" />
-                </Stack>
-            </Navbar.Section>
+            <Stack spacing={0} my={"lg"}>
+                <Navbar.Section mt={50}>
+                    <Stack justify="center" align="center" spacing={0}>
+                        {navLinks3}
+                    </Stack>
+                </Navbar.Section>
+                <Navbar.Section>
+                    <Stack justify="center" spacing={0}>
+                        <Image width={24} height={24} mx="auto" mt="md" radius="50%" src={avatar} alt="Profile image" />
+                    </Stack>
+                </Navbar.Section>
+            </Stack>
         </Navbar>
     );
 }

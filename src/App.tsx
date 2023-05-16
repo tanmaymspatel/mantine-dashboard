@@ -4,7 +4,7 @@ import Header from './core/components/Header'
 import SideBar from './core/components/SideBar'
 import MainComponent from './components/MainComponent'
 
-const useStyle = createStyles({
+const useStyle = createStyles((theme) => ({
   'wrapper': {
     display: "flex",
     height: "100%"
@@ -12,12 +12,13 @@ const useStyle = createStyles({
   'main-wrapper': {
     flexGrow: 1,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    backgroundColor: theme.colors.darkBlue
   },
   'main-content': {
     flexGrow: 1
   }
-})
+}))
 
 function App() {
   const { classes } = useStyle()
