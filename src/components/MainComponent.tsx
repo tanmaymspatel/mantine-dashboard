@@ -9,7 +9,7 @@ const useStyle = createStyles((theme) => ({
         height: "100%"
     },
     'grid-section': {
-
+        border: `1px solid ${theme.white}`
     },
     'healthStatus': {
         borderBottom: `1px solid ${theme.colors.gray[7]}`,
@@ -32,20 +32,20 @@ function MainComponent() {
     return (
         <div className={classes["main-wrapper"]}>
             <Grid grow gutter="xs" h={"100%"}>
-                <Grid.Col h={"50%"} p={"xl"} span={4}>
+                <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>
                     <Health />
                 </Grid.Col>
-                <Grid.Col h={"50%"} p={"xl"} span={4}>
+                <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>
                     <Tasks />
                 </Grid.Col>
-                <Grid.Col h={"50%"} p={"xl"} span={4}>
+                <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>
                     <Progress />
                 </Grid.Col>
-                <Grid.Col h={"50%"} p={"xl"} span={4}>4</Grid.Col>
-                <Grid.Col h={"50%"} p={"xl"} span={4}>
+                <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>4</Grid.Col>
+                <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>
                     <Cost />
                 </Grid.Col>
-                <Grid.Col h={"50%"} p={"xl"} span={4}>6</Grid.Col>
+                <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>6</Grid.Col>
             </Grid>
         </div>
     )
