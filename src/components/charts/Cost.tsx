@@ -35,4 +35,4 @@ function Cost() {
     )
 }
 
-export default Cost
+export default Cost;

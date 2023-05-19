@@ -3,6 +3,7 @@ import Health from "./Health";
 import Tasks from "./charts/Tasks";
 import Cost from "./charts/Cost";
 import Progress from "./charts/Progress";
+import Time from "./charts/Time";
 
 const useStyle = createStyles((theme) => ({
     'main-wrapper': {
@@ -41,7 +42,9 @@ function MainComponent() {
                 <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>
                     <Progress />
                 </Grid.Col>
-                <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>4</Grid.Col>
+                <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>
+                    <Time />
+                </Grid.Col>
                 <Grid.Col className={classes["grid-section"]} h={"50%"} p={"xl"} span={4}>
                     <Cost />
                 </Grid.Col>

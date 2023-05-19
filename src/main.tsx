@@ -14,7 +14,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         darkBlue: ['#101422'],
         mantis: ['#6ACB6D'],
         seaColor: ['#50CAC2'],
-        quickSilver: ['#9DA4AD']
+        quickSilver: ['#9DA4AD'],
+        raspberryPink: ['#dc5b9c'],
+        sandyBworn: ['f7a651'],
+        pitconBlue: ['45ABF7'],
+        tuftsBlue: ['4198E0']
       }
     }}>
       <GlobalStyles />

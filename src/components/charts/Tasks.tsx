@@ -71,8 +71,8 @@ function Tasks() {
 
     return (
         <>
-            <Title fw={400} color={theme.white} order={4}>Health</Title>
-            <div style={{ height: "350px", display: "flex", justifyContent: "center" }}>
+            <Title fw={400} color={theme.white} order={4}>Tasks</Title>
+            <div style={{ display: "flex", justifyContent: "center" }}>
                 <Doughnut data={data} options={options} plugins={plugins} />
             </div>
         </>
