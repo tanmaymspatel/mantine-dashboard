@@ -4,9 +4,6 @@ const useStyle = createStyles((theme) => ({
     'main-wrapper': {
         height: "100%"
     },
-    'grid-section': {
-
-    },
     'healthStatus': {
         borderBottom: `1px solid ${theme.colors.gray[7]}`,
 

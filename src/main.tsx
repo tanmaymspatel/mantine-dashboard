@@ -11,7 +11,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
     <MantineProvider theme={{
       colors: {
-        darkBlue: ['#101422']
+        darkBlue: ['#101422'],
+        mantis: ['#6ACB6D'],
+        seaColor: ['#50CAC2'],
+        quickSilver: ['#9DA4AD']
       }
     }}>
       <GlobalStyles />

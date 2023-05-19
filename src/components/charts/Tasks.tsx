@@ -1,46 +1,84 @@
 import { Doughnut } from 'react-chartjs-2';
-import { Chart, ArcElement } from 'chart.js'
-Chart.register(ArcElement);
+import { Chart, ArcElement, ChartData } from 'chart.js'
+import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
+import { Title, useMantineTheme } from '@mantine/core';
 
-const data = {
-
-    labels: ['Not Started(10)', 'Completed(6)', 'In Progress(2)'],
-    datasets: [
-        {
-            label: '# of Votes',
-            data: [10, 6, 2],
-            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 206, 86)'],
-            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
-            borderWidth: 1,
-        },
-    ],
-};
-
-const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            display: true,
-            position: 'top' as 'top',
-            labels: {
-                boxWidth: 10,
-                borderRadius: 50,
-                usePointStyle: true,
-            },
-        },
-
-    },
-};
+Chart.register(ArcElement, ChartDataLabels);
 
 function Tasks() {
+
+    const theme = useMantineTheme()
+    const data: ChartData<'doughnut'> = {
+        labels: ['Not Started (10)', 'Completed (6)', 'In Progress (2)'],
+        datasets: [
+            {
+                label: '# of Votes',
+                data: [10, 6, 2],
+                backgroundColor: [theme.colors.quickSilver[0], theme.colors.mantis[0], theme.colors.seaColor[0]],
+                borderColor: "transparent",
+                borderWidth: 1,
+                offset: 10,
+                datalabels: {
+                    anchor: 'end',
+                    align: 'end',
+                    color: (context: Context) => {
+                        const index = context.dataIndex
+                        const colors: any = context.dataset.backgroundColor;
+                        return colors[index]
+                    },
+                    font: {
+                        size: 20,
+                        weight: 'bold'
+                    }
+                }
+            },
+        ],
+    };
+
+    const options = {
+        responsive: true,
+        cutout: "85%",
+        radius: 95,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top' as 'top',
+                labels: {
+                    boxWidth: 10,
+                    borderRadius: 50,
+                    usePointStyle: true,
+                    color: theme.white
+                },
+            },
+
+
+        }
+    };
+
+    // margin for legends
+    const legendMargin = {
+        id: 'legendMargin',
+        beforeInit(chart: any) {
+            const fiValue = chart.legend.fit;
+            chart.legend.fit = function () {
+                fiValue.bind(chart.legend)();
+                return (this.height += 5);
+            };
+        },
+    };
+
+    const plugins = [legendMargin];
+
     return (
         <>
-            <div style={{ border: "1px solid red", height: "50px" }}></div>
-            <div style={{ height: "300px" }}>
-                <Doughnut data={data} options={options} />
+            <Title fw={400} color={theme.white} order={4}>Health</Title>
+            <div style={{ height: "350px", display: "flex", justifyContent: "center" }}>
+                <Doughnut data={data} options={options} plugins={plugins} />
             </div>
         </>
     )
 }
 
 export default Tasks
+
+
